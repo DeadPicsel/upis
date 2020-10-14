@@ -42,8 +42,9 @@ sudo apt-get install -y audacious
 sudo apt-get install -y vlc
 
 # System Applications
-sudo apt-get install p7zip-full
+sudo apt-get install -y p7zip-full
 sudo apt-get install -y wine
+sudo apt-get install -y guake
 
 # Virtualbox
 sudo apt-get install -y virtualbox
