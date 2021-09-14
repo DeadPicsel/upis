@@ -129,6 +129,19 @@ else
     printf "${RED}Multimedia Applications Not Installed!\n"
 fi
 
+# Note-Taking Applications
+printf "${LBLUE}\nWould you like to install Note-Taking Applications? ${WHITE}[Y/n]${ENDCOLOR}\n"
+old_stty_cfg=$(stty -g)
+stty raw -echo
+answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+stty $old_stty_cfg
+if echo "$answer" | grep -iq "^y" ;then
+sudo snap install p3x-onenote
+    printf "${GREEN}Note-Taking Applications Installed!\n"
+else
+    printf "${RED}Note-Taking Applications Not Installed!\n"
+fi
+
 # System Applications
 printf "${LBLUE}\nWould you like to install System Applications? ${WHITE}[Y/n]${ENDCOLOR}\n"
 old_stty_cfg=$(stty -g)
