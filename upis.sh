@@ -42,35 +42,6 @@ else
     printf "${RED}Directories Not created\n"
 fi
 
-# Add 3rd Party Repositories Keys
-printf "${LBLUE}\nWould you like to add 3rd Party Repositories Keys? ${WHITE}[Y/n]${ENDCOLOR}\n"
-old_stty_cfg=$(stty -g)
-stty raw -echo
-answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-stty $old_stty_cfg
-if echo "$answer" | grep -iq "^y" ;then
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-    printf "${GREEN}3rd Party Repositories Keys Added!\n"
-else
-    printf "${RED}3rd Party Repositories Keys Not Added!\n"
-fi
-
-# Add 3rd Party Repositories
-printf "${LBLUE}\nWould you like to add 3rd Party Repositories Keys? ${WHITE}[Y/n]${ENDCOLOR}\n"
-old_stty_cfg=$(stty -g)
-stty raw -echo
-answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-stty $old_stty_cfg
-if echo "$answer" | grep -iq "^y" ;then
-sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' ; 
-sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian hirsute non-free contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
-    printf "${GREEN}3rd Party Repositories Added!\n"
-else
-    printf "${RED}3rd Party Repositories Not Added!\n"
-fi
-
 # Basic Update
 printf "${LBLUE}\nWould you like to run a Basic System Update? ${WHITE}[Y/n]${ENDCOLOR}\n"
 old_stty_cfg=$(stty -g)
@@ -85,6 +56,25 @@ sudo apt-get install -y build-essential
     printf "${GREEN}Basic System Update Completed!\n"
 else
     printf "${RED}Basic System Update Not Completed!\n"
+fi
+
+
+# System Applications
+printf "${LBLUE}\nWould you like to install System Applications? ${WHITE}[Y/n]${ENDCOLOR}\n"
+old_stty_cfg=$(stty -g)
+stty raw -echo
+answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+stty $old_stty_cfg
+if echo "$answer" | grep -iq "^y" ;then
+sudo apt-get install -y guake
+sudo apt-get install -y p7zip-full
+sudo apt-get install -y snapd
+sudo apt-get install -y unrar
+sudo apt-get install -y wget
+sudo apt-get install -y wine
+    printf "${GREEN}System Applications Installed!\n"
+else
+    printf "${RED}System Applications Not Installed!\n"
 fi
 
 # Graphics Applications
@@ -107,7 +97,8 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
-sudo apt-get install -y google-chrome-stable
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt-get install -y deluge
 sudo apt-get install -y filezilla
     printf "${GREEN}Internet Applications Installed!\n"
@@ -127,50 +118,6 @@ sudo apt-get install -y vlc
     printf "${GREEN}Multimedia Applications Installed!\n"
 else
     printf "${RED}Multimedia Applications Not Installed!\n"
-fi
-
-# Note-Taking Applications
-printf "${LBLUE}\nWould you like to install Note-Taking Applications? ${WHITE}[Y/n]${ENDCOLOR}\n"
-old_stty_cfg=$(stty -g)
-stty raw -echo
-answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-stty $old_stty_cfg
-if echo "$answer" | grep -iq "^y" ;then
-sudo snap install p3x-onenote
-    printf "${GREEN}Note-Taking Applications Installed!\n"
-else
-    printf "${RED}Note-Taking Applications Not Installed!\n"
-fi
-
-# System Applications
-printf "${LBLUE}\nWould you like to install System Applications? ${WHITE}[Y/n]${ENDCOLOR}\n"
-old_stty_cfg=$(stty -g)
-stty raw -echo
-answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-stty $old_stty_cfg
-if echo "$answer" | grep -iq "^y" ;then
-sudo apt-get install -y guake
-sudo apt-get install -y p7zip-full
-sudo apt-get install -y unrar
-sudo apt-get install -y wine
-    printf "${GREEN}System Applications Installed!\n"
-else
-    printf "${RED}System Applications Not Installed!\n"
-fi
-
-# VirtualBox
-printf "${LBLUE}\nWould you like to install VirtualBox? ${WHITE}[Y/n]${ENDCOLOR}\n"
-old_stty_cfg=$(stty -g)
-stty raw -echo
-answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-stty $old_stty_cfg
-if echo "$answer" | grep -iq "^y" ;then
-sudo apt-get install -y virtualbox
-sudo adduser x vboxusers
-    printf "${GREEN}VirtualBox Installed!\n"
-    printf "${GREEN}User added to VirtualBox Usergroup!\n"
-else
-    printf "${RED}VirtualBox Not Installed!\n"
 fi
 
 # Restricted Extras
