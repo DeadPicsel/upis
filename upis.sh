@@ -66,12 +66,12 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
-sudo apt-get install -y guake
-sudo apt-get install -y p7zip-full
-sudo apt-get install -y snapd
-sudo apt-get install -y unrar
-sudo apt-get install -y wget
-sudo apt-get install -y wine
+sudo apt install gnome-shell-extension-manager
+sudo apt install -y p7zip-full
+sudo apt install -y snapd
+sudo apt install -y unrar
+sudo apt install -y wget
+sudo apt install -y wine
     printf "${GREEN}System Applications Installed!\n"
 else
     printf "${RED}System Applications Not Installed!\n"
@@ -84,7 +84,7 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
-sudo apt-get install -y gimp
+sudo apt install -y gimp
     printf "${GREEN}Graphics Applications Installed!\n"
 else
     printf "${RED}Graphics Applications Not Installed!\n"
@@ -99,8 +99,8 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get install -y deluge
-sudo apt-get install -y filezilla
+sudo apt install -y deluge
+sudo apt install -y filezilla
     printf "${GREEN}Internet Applications Installed!\n"
 else
     printf "${RED}Internet Applications Not Installed!\n"
@@ -113,8 +113,8 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
-sudo apt-get install -y audacious
-sudo apt-get install -y vlc
+sudo apt install -y audacious
+sudo apt install -y vlc
     printf "${GREEN}Multimedia Applications Installed!\n"
 else
     printf "${RED}Multimedia Applications Not Installed!\n"
@@ -127,7 +127,7 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
-sudo apt-get install -y ubuntu-restricted-extras
+sudo apt install -y ubuntu-restricted-extras
     printf "${GREEN}Restricted Extras Installed!\n"
 else
     printf "${RED}Restricted Extras Not Installed!\n"
