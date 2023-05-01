@@ -66,12 +66,14 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
+sudo apt install -y curl
 sudo apt install gnome-shell-extension-manager
 sudo apt install -y p7zip-full
 sudo apt install -y snapd
 sudo apt install -y unrar
 sudo apt install -y wget
 sudo apt install -y wine
+
     printf "${GREEN}System Applications Installed!\n"
 else
     printf "${RED}System Applications Not Installed!\n"
@@ -131,6 +133,34 @@ sudo apt install -y ubuntu-restricted-extras
     printf "${GREEN}Restricted Extras Installed!\n"
 else
     printf "${RED}Restricted Extras Not Installed!\n"
+fi
+
+# Apps from Snap
+printf "${LBLUE}\nWould you like to install Apps from Snap? ${WHITE}[Y/n]${ENDCOLOR}\n"
+old_stty_cfg=$(stty -g)
+stty raw -echo
+answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+stty $old_stty_cfg
+if echo "$answer" | grep -iq "^y" ;then
+sudo snap install -y whatsapp-for-linux
+sudo snap install -y telegram-desktop
+    printf "${GREEN}Apps from Snap Installed!\n"
+else
+    printf "${RED}Apps from Snap Not Installed!\n"
+fi
+
+# ZSH & OHMYZSH
+printf "${LBLUE}\nWould you like to install Zsh and Oh My Zsh? ${WHITE}[Y/n]${ENDCOLOR}\n"
+old_stty_cfg=$(stty -g)
+stty raw -echo
+answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+stty $old_stty_cfg
+if echo "$answer" | grep -iq "^y" ;then
+sudo apt install -y zsh
+
+    printf "${GREEN}Zsh and c Installed!\n"
+else
+    printf "${RED}Zsh and Oh My Zsh Not Installed!\n"
 fi
 
 # Reboot Prompt
