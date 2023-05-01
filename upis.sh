@@ -142,14 +142,14 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
-sudo snap install -y whatsapp-for-linux
-sudo snap install -y telegram-desktop
+sudo snap install whatsapp-for-linux
+sudo snap install telegram-desktop
     printf "${GREEN}Apps from Snap Installed!\n"
 else
     printf "${RED}Apps from Snap Not Installed!\n"
 fi
 
-# ZSH & OHMYZSH
+# ZSH
 printf "${LBLUE}\nWould you like to install Zsh and Oh My Zsh? ${WHITE}[Y/n]${ENDCOLOR}\n"
 old_stty_cfg=$(stty -g)
 stty raw -echo
@@ -157,8 +157,8 @@ answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
 sudo apt install -y zsh
-
-    printf "${GREEN}Zsh and c Installed!\n"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    printf "${GREEN}Zsh and Oh My Zsh Installed!\n"
 else
     printf "${RED}Zsh and Oh My Zsh Not Installed!\n"
 fi
