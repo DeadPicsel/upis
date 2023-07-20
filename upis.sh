@@ -70,6 +70,7 @@ sudo apt install -y curl
 sudo apt install -y flameshot
 sudo apt install -y git
 sudo apt install gnome-shell-extension-manager
+sudo apt install -y libfuse2
 sudo apt install -y p7zip-full
 sudo apt install -y snapd
 sudo apt install -y unrar
