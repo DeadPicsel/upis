@@ -67,6 +67,7 @@ answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
 sudo apt install -y curl
+sudo apt install -y git
 sudo apt install gnome-shell-extension-manager
 sudo apt install -y p7zip-full
 sudo apt install -y snapd
